@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
+// -----------------Models-----------------
+
+// Event model
+
 const eventSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -17,8 +22,16 @@ const eventSchema = new mongoose.Schema({
     location: {
         type: String,
         required: true
+    },
+    members: [String],
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+
     }
 });
+
 
 const userSchema = new mongoose.Schema({
     username: {
